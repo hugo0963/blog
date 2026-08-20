@@ -1,0 +1,268 @@
+/* ============================================
+   參拾 aChi — 樣式表
+   淺色為主，系統切到深色模式時自動變深色。
+   改顏色只要動下面兩組色票，其他地方都不用碰。
+   ============================================ */
+
+/* --- 色票 1：淺色（預設） --- */
+:root {
+  --bg:         #faf9f7;   /* 背景，米白 */
+  --bg-card:    #ffffff;   /* 卡片底色 */
+  --border:     #e3e0da;   /* 分隔線 */
+  --text:       #1f2328;   /* 主要文字 */
+  --text-dim:   #5c6570;   /* 次要文字 */
+  --accent:     #1a7f37;   /* 強調色，深綠 */
+  --header-bg:  rgba(250, 249, 247, 0.85);  /* 頁首半透明底 */
+  --radius:     10px;
+  --wrap:       680px;     /* 內容最大寬度，閱讀優先所以不要太寬 */
+}
+
+/* --- 色票 2：深色（系統設定為深色模式時自動套用） ---
+   要改深色的顏色就改這一區，改淺色改上面那區。 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #0e1116;
+    --bg-card:   #161b22;
+    --border:    #262d36;
+    --text:      #e6edf3;
+    --text-dim:  #9aa7b4;
+    --accent:    #7ee787;
+    --header-bg: rgba(14, 17, 22, 0.85);
+  }
+}
+
+/* --- 基礎 --- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Helvetica Neue",
+               "PingFang TC", "Noto Sans TC", sans-serif;
+  font-size: 18px;
+  line-height: 1.9;      /* 閱讀優先，行距拉開 */
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- 頁首 --- */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--header-bg);
+  backdrop-filter: blur(8px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.brand {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 18px;
+}
+.brand em {                /* 站名的英文部分 */
+  font-style: normal;
+  color: var(--accent);
+}
+.brand:hover { text-decoration: none; }
+
+.nav a {
+  color: var(--text-dim);
+  margin-left: 22px;
+  font-size: 15px;
+}
+.nav a:hover { color: var(--text); text-decoration: none; }
+
+/* --- 首頁開場 --- */
+.hero {
+  padding: 72px 0 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 0 0 14px;
+}
+
+.hero h1 {
+  margin: 0 0 20px;
+  font-size: 40px;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.lede {
+  color: var(--text-dim);
+  margin: 0 0 28px;
+  font-size: 17px;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  font-size: 15px;
+  background: var(--bg-card);
+  transition: border-color 0.2s;
+}
+.btn:hover { border-color: var(--accent); text-decoration: none; }
+
+/* --- 區塊 --- */
+.section { padding: 56px 0 0; }
+
+.section-title {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* --- 文章卡片 --- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 16px;
+}
+
+.card time {
+  color: var(--text-dim);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.card h3 {
+  margin: 6px 0 10px;
+  font-size: 21px;
+  line-height: 1.5;
+}
+.card h3 a { color: var(--text); }
+.card h3 a:hover { color: var(--accent); text-decoration: none; }
+
+.card p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 16px;
+}
+
+/* 標籤 */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.tags li {
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 12px;
+}
+
+.about-text { color: var(--text-dim); margin: 0; font-size: 17px; }
+
+/* --- 文章頁（_template.html 用） --- */
+.post { padding: 56px 0 0; }
+
+/* 文章頁的標籤要跟內文拉開，不然會黏在第一段上面 */
+.post .tags { margin-bottom: 32px; }
+
+.post h1 {
+  font-size: 32px;
+  line-height: 1.45;
+  margin: 10px 0 18px;
+  letter-spacing: -0.5px;
+}
+
+.post-meta {
+  color: var(--text-dim);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-body h2 {
+  font-size: 22px;
+  margin: 44px 0 14px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.post-body p { margin: 0 0 22px; }
+
+.post-body ul, .post-body ol { padding-left: 1.4em; }
+.post-body li { margin-bottom: 8px; }
+
+.post-body code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.88em;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+.post-body img { max-width: 100%; border-radius: var(--radius); }
+
+/* 三行區塊：預期與現實的落差 */
+.three-lines {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 36px 0;
+}
+.three-lines p { margin: 0 0 10px; font-size: 16px; }
+.three-lines p:last-child { margin-bottom: 0; }
+.three-lines strong { color: var(--accent); }
+
+.back {
+  display: inline-block;
+  margin: 48px 0 0;
+  font-size: 15px;
+}
+
+/* --- 頁尾 --- */
+.site-footer {
+  margin-top: 72px;
+  border-top: 1px solid var(--border);
+  padding: 26px 0;
+}
+.site-footer p { margin: 0; color: var(--text-dim); font-size: 13px; }
+
+/* --- 手機版 --- */
+@media (max-width: 600px) {
+  body { font-size: 17px; }
+  .hero { padding: 48px 0 40px; }
+  .hero h1 { font-size: 29px; }
+  .post h1 { font-size: 25px; }
+}

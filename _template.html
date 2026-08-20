@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- ===================================================================
+     新文章範本
+     用法：
+     1. 複製這個檔案到 posts/，檔名用「YYYY-MM-DD-標題.html」
+        例：posts/2026-08-20-第一個網頁.html
+     2. 把下面所有 ★ 標記的地方改掉
+     3. 回 index.html，複製一個 <article class="card"> 卡片，
+        把 href 指到你剛建的檔案
+     注意：檔案在 posts/ 裡，所以路徑要用 ../ 往上一層（已經寫好了）
+     =================================================================== -->
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ★ 改標題（會出現在瀏覽器分頁上） -->
+  <title>文章標題 — 參拾 aChi</title>
+  <!-- ★ 改摘要（Google 搜尋結果顯示的那段） -->
+  <meta name="description" content="這篇在講什麼，一兩句。">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">參拾 <em>aChi</em></a>
+      <nav class="nav">
+        <a href="../index.html#posts">文章</a>
+        <a href="../index.html#about">關於</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap post">
+
+    <!-- ★ 改日期，datetime 和顯示文字兩個都要改 -->
+    <p class="post-meta"><time datetime="2026-08-20">2026-08-20</time></p>
+
+    <!-- ★ 改標題 -->
+    <h1>文章標題</h1>
+
+    <!-- ★ 改標籤。想不到就先寫「心得」。要新增標籤前先看看首頁已經有哪些，不要長出同義詞 -->
+    <ul class="tags">
+      <li>心得</li>
+    </ul>
+
+    <div class="post-body">
+
+      <!-- ★ 內文從這裡開始。一段文字包一個 <p> ... </p> -->
+      <p>
+        第一段。通常先講當時的情況：我想做什麼、為什麼想做。
+      </p>
+
+      <!-- 小標題用 <h2>，不需要的話整行刪掉 -->
+      <h2>小標題</h2>
+
+      <p>
+        第二段。
+      </p>
+
+      <!-- 條列清單，不需要就整塊刪掉 -->
+      <ul>
+        <li>第一點</li>
+        <li>第二點</li>
+      </ul>
+
+      <!-- 提到指令或檔名，用 <code> 包起來會變成灰底小方塊，像這樣：
+           我跑了 <code>python3 -m http.server</code> 起伺服器 -->
+
+      <!-- 三行：這篇的重點。不想寫就整塊刪掉，但建議留著 -->
+      <div class="three-lines">
+        <p><strong>我原本想：</strong>當初的假設</p>
+        <p><strong>結果是：</strong>實際發生什麼</p>
+        <p><strong>下次會：</strong>改成怎麼做（寫具體行為，不要寫感想）</p>
+      </div>
+
+    </div>
+
+    <a class="back" href="../index.html">← 回首頁</a>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 參拾 aChi · 用純 HTML / CSS 手寫</p>
+    </div>
+  </footer>
+
+</body>
+</html>
