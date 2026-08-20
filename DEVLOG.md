@@ -45,3 +45,28 @@
 截圖：`screenshots/2026-08-19-首頁-淺色.png`、`-深色.png`、`-文章範本.png`
 
 下一步：上線（第二階段）——裝 gh、登入、git init、推上 GitHub、開啟 Pages。
+## 2026-08-20 — 上線
+
+做了什麼：
+- `brew install gh` 裝 GitHub CLI，achi 自己跑 `gh auth login --web` 登入 `hugo0963`
+- `git init -b main`，**倉庫層級**設 `user.email = hugo0963@users.noreply.github.com`
+  （全域設定是真實 email，只改這個專案，避免真實 email 進公開歷史）
+- `gh repo create blog --public --source=. --remote=origin --push`
+- `gh api -X POST repos/hugo0963/blog/pages` 開啟 Pages（`main` 分支根目錄）
+- 網址：https://hugo0963.github.io/blog/
+
+驗證方式：
+- 推之前先 `grep -rniE 'password|token|api_key|@gmail.com|...'` 掃一次，
+  唯一命中是 `CLAUDE.md` 裡「不要把密碼、token 寫進檔案」這條規則本身
+- `git log --format='%an <%ae>'` 確認作者是 noreply email，不是真實信箱
+- Pages 建置完成後 curl 網址等 HTTP 200
+
+踩到的坑：
+- Claude Code 輸入框的 `!` 前綴是「在這個 session 跑 shell」的意思，**不是指令的一部分**。
+  整行連 `!` 貼進 zsh 之後，`!` 變成 zsh 的邏輯反轉，把 `cd` 的成功反轉成失敗，
+  `&&` 後面的 `gh repo create` 就被跳過了 → 看起來「沒反應」，其實是短路
+- `gh auth login` 是方向鍵選單，在 `!` 模式裡會卡住。
+  加 `--hostname github.com --git-protocol https --web` 可以跳過選單，直接給 8 碼
+
+未執行的想法：
+- 首頁那張「第一天」卡片還連到 `#`，`posts/` 是空的 → 點下去沒反應

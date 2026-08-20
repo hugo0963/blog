@@ -3,7 +3,7 @@
 achi 的學習部落格。純 HTML / CSS，沒有框架、沒有 JavaScript、沒有建置工具。
 一律使用**繁體中文（台灣用語）**。動手前先讀完這份。
 
-網址（尚未上線）：`https://hugo0963.github.io/blog/`
+網址（已上線 2026-08-20）：`https://hugo0963.github.io/blog/`
 
 ---
 
